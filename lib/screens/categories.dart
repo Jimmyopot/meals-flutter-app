@@ -10,13 +10,14 @@ import 'package:meals/widgets/category_grid_item.dart';
 // pop back to categories screen
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.onToggleFavorite});
+  const CategoriesScreen({super.key, required this.onToggleFavorite, required this.availableMeals});
 
   final void Function(Meal meal) onToggleFavorite;
+  final List<Meal> availableMeals;
 
   void _selectCategory(BuildContext context, Category category) {
     // Navigate to meals screen
-    final filteredmeals = dummyMeals.where((meal) {
+    final filteredmeals = availableMeals.where((meal) {
       return meal.categories.contains(category.id);
     }).toList();
     
